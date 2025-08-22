@@ -2,7 +2,7 @@
 
 A modern, privacy-focused journaling application that helps users track their emotional well-being through AI-powered sentiment analysis and mood tracking.
 
-## 🚀 Features
+## Features
 
 ### Core MVP Features
 - **Secure Authentication**: Firebase-based user registration and login
@@ -18,7 +18,7 @@ A modern, privacy-focused journaling application that helps users track their em
 - **Writing Analytics**: Word count tracking and writing consistency metrics
 - **Responsive Design**: Beautiful, modern UI that works on all devices
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 19** with Vite
@@ -33,7 +33,7 @@ A modern, privacy-focused journaling application that helps users track their em
 - **Compromise** for NLP and emotion extraction
 - **CORS** enabled for cross-origin requests
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 - Node.js (v16 or higher)
@@ -60,7 +60,7 @@ npm run dev
 3. Enable Firestore Database
 4. Update `frontend/src/firebase.js` with your config
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 Create a `.env` file in the backend directory:
