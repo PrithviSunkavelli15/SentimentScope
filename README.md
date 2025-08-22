@@ -82,7 +82,7 @@ service cloud.firestore {
 }
 ```
 
-## 🚀 Usage
+## Usage
 
 ### Getting Started
 1. Register a new account or log in
@@ -99,7 +99,7 @@ service cloud.firestore {
 - Try to write for at least 5-10 minutes
 - Don't judge your thoughts, just observe them
 
-## 📊 Sentiment Analysis
+## Sentiment Analysis
 
 The app uses a combination of:
 - **Keyword-based analysis** for quick sentiment detection
@@ -107,7 +107,7 @@ The app uses a combination of:
 - **Emotion extraction** to identify specific feelings
 - **Confidence scoring** to measure analysis reliability
 
-## 🔒 Privacy & Security
+## Privacy & Security
 
 - **End-to-end encryption** for journal entries
 - **User authentication** required for all operations
@@ -115,7 +115,7 @@ The app uses a combination of:
 - **No third-party data sharing**
 - **Local sentiment analysis** option available
 
-## 🎯 Roadmap
+## Roadmap
 
 ### Phase 2
 - [ ] Advanced NLP models integration
@@ -129,7 +129,7 @@ The app uses a combination of:
 - [ ] Integration with health apps
 - [ ] Community features (anonymous sharing)
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -137,15 +137,15 @@ The app uses a combination of:
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📝 License
+## License
 
 This project is licensed under the ISC License.
 
-## 🆘 Support
+## Support
 
 For support, please open an issue on GitHub or contact the development team.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Firebase for backend services
 - TipTap for the rich text editor
@@ -154,4 +154,8 @@ For support, please open an issue on GitHub or contact the development team.
 
 ---
 
-**Built with ❤️ for better mental health and emotional awareness**
+**Built for better mental health and emotional awareness**
+
+**Sentiment Scope — AI-Powered Journaling Web App**
+
+Sentiment Scope is a full-stack journaling application that applies natural language processing (NLP) to analyze journal entries across 25+ emotions with weighted intensity and contextual understanding. It computes a composite emotional score, visualizes trends over time, and surfaces actionable insights. The app is built with React 18, Vite, TypeScript, Tailwind CSS, Firebase (Firestore, Authentication), and optionally a Node.js backend for background processing and advanced analysis.
