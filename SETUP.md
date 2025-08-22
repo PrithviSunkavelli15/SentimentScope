@@ -1,134 +1,124 @@
-# 🚀 SentimentScope Setup Guide
+# 🔐 Secure Setup Guide
 
-## Quick Start
+## ⚠️ IMPORTANT: Security First!
 
-### Option 1: Use the startup script (Recommended)
+This project requires Firebase configuration. **NEVER commit your actual API keys to GitHub!**
+
+## 🚀 Quick Setup
+
+### 1. Clone the Repository
 ```bash
-./start-app.sh
+git clone <your-repo-url>
+cd my_journaling_app
 ```
 
-### Option 2: Manual startup
-Open two terminal windows:
-
-**Terminal 1 - Backend:**
+### 2. Install Dependencies
 ```bash
-cd backend
-npm install
-node server.js
-```
-
-**Terminal 2 - Frontend:**
-```bash
+# Install frontend dependencies
 cd frontend
 npm install
+
+# Install backend dependencies
+cd ../backend
+npm install
+```
+
+### 3. Configure Firebase
+
+#### Option A: Environment Variables (Recommended)
+Create a `.env` file in the `frontend` directory:
+
+```bash
+# frontend/.env
+VITE_FIREBASE_API_KEY=your_actual_api_key_here
+VITE_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project_id.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+VITE_BACKEND_URL=http://localhost:3001
+```
+
+#### Option B: Direct Configuration
+Copy `src/config.template.js` to `src/config.js` and fill in your values:
+
+```javascript
+export const firebaseConfig = {
+  apiKey: "your_actual_api_key_here",
+  authDomain: "your_project_id.firebaseapp.com",
+  projectId: "your_project_id",
+  storageBucket: "your_project_id.firebasestorage.app",
+  messagingSenderId: "your_messaging_sender_id",
+  appId: "your_app_id",
+  measurementId: "your_measurement_id"
+};
+```
+
+### 4. Firebase Project Setup
+
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project or select existing one
+3. Enable Authentication (Email/Password)
+4. Create Firestore Database (start in test mode)
+5. Get your configuration from Project Settings
+
+### 5. Start the Application
+
+#### Terminal 1: Backend
+```bash
+cd backend
+npm start
+```
+
+#### Terminal 2: Frontend
+```bash
+cd frontend
 npm run dev
 ```
 
-## 🌐 Access Your App
+## 🔒 Security Checklist
 
-- **Frontend**: http://localhost:5173
-- **Backend API**: http://localhost:3001
-- **Health Check**: http://localhost:3001/api/health
+- [ ] `.env` file is created with your Firebase config
+- [ ] `.env` file is in `.gitignore`
+- [ ] No API keys are committed to Git
+- [ ] Firebase rules are configured properly
+- [ ] Authentication is enabled
+- [ ] Firestore is created
 
-## 🔧 What's Running
+## 🚨 What NOT to Do
 
-### Backend Server (Port 3001)
-- Express.js server with sentiment analysis
-- Uses `sentiment` and `compromise` libraries for NLP
-- CORS enabled for frontend communication
-- Endpoints:
-  - `POST /api/analyze-sentiment` - Analyze text sentiment
-  - `GET /api/health` - Server health check
+- ❌ Never commit `.env` files
+- ❌ Never commit `config.js` with real keys
+- ❌ Never share your Firebase config publicly
+- ❌ Never use test mode in production
 
-### Frontend App (Port 5173)
-- React 19 with Vite
-- Firebase authentication
-- TipTap rich text editor
-- Chart.js for mood tracking
-- Tailwind CSS for styling
+## 🆘 Troubleshooting
 
-## 🧪 Testing the App
+### "Firebase not initialized" Error
+- Check that your `.env` file exists
+- Verify all environment variables are set
+- Restart your development server
 
-### 1. Test Backend API
-```bash
-curl http://localhost:3001/api/health
-```
+### "Permission denied" Error
+- Check Firebase security rules
+- Ensure Authentication is enabled
+- Verify your project ID is correct
 
-### 2. Test Sentiment Analysis
-```bash
-curl -X POST http://localhost:3001/api/analyze-sentiment \
-  -H "Content-Type: application/json" \
-  -d '{"text": "I am feeling very happy today!"}'
-```
+## 📚 Additional Resources
 
-### 3. Open Frontend
-Navigate to http://localhost:5173 in your browser
+- [Firebase Documentation](https://firebase.google.com/docs)
+- [Vite Environment Variables](https://vitejs.dev/guide/env-and-mode.html)
+- [React Security Best Practices](https://reactjs.org/docs/security.html)
 
-## 📱 App Features to Test
+## 🤝 Contributing
 
-1. **User Registration/Login**
-   - Create a new account
-   - Log in with existing credentials
-
-2. **Journal Entry Creation**
-   - Write a new entry using the rich text editor
-   - Test formatting options (bold, italic, lists)
-   - Save entry and see sentiment analysis
-
-3. **Dashboard Features**
-   - View entry history
-   - See mood trends chart
-   - Check weekly summary
-   - View emotion analysis
-
-4. **Sentiment Analysis**
-   - Write positive/negative/neutral content
-   - See how the app classifies emotions
-   - Check confidence scores
-
-## 🐛 Troubleshooting
-
-### Backend Issues
-- Check if port 3001 is available
-- Ensure all dependencies are installed: `npm install`
-- Check console for error messages
-
-### Frontend Issues
-- Check if port 5173 is available
-- Ensure Firebase config is correct
-- Check browser console for errors
-
-### Common Issues
-- **Port already in use**: Change port in `backend/server.js`
-- **Firebase errors**: Verify your Firebase project setup
-- **CORS issues**: Backend has CORS enabled by default
-
-## 🔒 Firebase Setup Required
-
-1. Create Firebase project at https://console.firebase.google.com
-2. Enable Authentication (Email/Password)
-3. Enable Firestore Database
-4. Update `frontend/src/firebase.js` with your config
-5. Set Firestore security rules
-
-## 📊 Sample Data
-
-The app includes:
-- Daily writing prompts
-- Sentiment analysis algorithms
-- Emotion detection
-- Mood tracking over time
-- Weekly insights generation
-
-## 🎯 Next Steps
-
-After testing the basic functionality:
-1. Customize the UI colors and branding
-2. Add more sophisticated sentiment analysis
-3. Implement data export features
-4. Add mobile responsiveness improvements
-5. Integrate with external NLP services
+When contributing to this project:
+1. Use the template files for configuration
+2. Never commit real API keys
+3. Test with your own Firebase project
+4. Update documentation if needed
 
 ---
 
-**Happy Journaling! 📝✨**
+**Remember: Security is everyone's responsibility! 🔐**

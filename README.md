@@ -40,34 +40,76 @@ A modern, privacy-focused journaling application that helps users track their em
 - npm or yarn
 - Firebase project setup
 
-### Frontend Setup
+### Quick Setup
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd my_journaling_app
+
+# Run the setup script to create environment configuration
+./setup-env.sh
+
+# Follow the prompts to configure Firebase
+# Then start the application
+./start-app.sh
+```
+
+### Manual Setup
+
+#### Frontend Setup
 ```bash
 cd frontend
 npm install
-npm run dev
 ```
 
-### Backend Setup
+#### Backend Setup
 ```bash
 cd backend
 npm install
-npm run dev
 ```
 
-### Firebase Configuration
-1. Create a new Firebase project
+#### Firebase Configuration
+1. Create a new Firebase project at [Firebase Console](https://console.firebase.google.com/)
 2. Enable Authentication (Email/Password)
 3. Enable Firestore Database
-4. Update `frontend/src/firebase.js` with your config
+4. Create a `.env` file in the `frontend` directory with your Firebase config
+5. See `SETUP.md` for detailed configuration instructions
 
-## Configuration
+**⚠️ IMPORTANT: Never commit your Firebase API keys to Git!**
 
-### Environment Variables
-Create a `.env` file in the backend directory:
+## Security
+
+### 🔐 Environment Variables
+This project uses environment variables to keep sensitive information secure. **Never commit API keys or secrets to Git!**
+
+#### Frontend Environment Variables
+Create a `.env` file in the `frontend` directory:
 ```env
-PORT=5000
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project_id.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id
+VITE_BACKEND_URL=http://localhost:3001
+```
+
+#### Backend Environment Variables
+Create a `.env` file in the `backend` directory:
+```env
+PORT=3001
 NODE_ENV=development
 ```
+
+### 🛡️ Security Features
+- Environment variable validation
+- Firebase security rules
+- User authentication required
+- Data isolation between users
+- Secure API endpoints
+
+## Configuration
 
 ### Firebase Rules
 Set up Firestore security rules:
