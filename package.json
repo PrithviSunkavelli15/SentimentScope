@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "test": "npm test --prefix backend",
+    "test:rules": "npm run test:rules --prefix backend"
+  },
   "dependencies": {
     "firebase": "^12.1.0"
   }

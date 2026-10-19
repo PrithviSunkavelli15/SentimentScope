@@ -1,0 +1,30 @@
+name: Tests
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install backend dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Run scoring tests
+        working-directory: backend
+        run: npm test
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Run Firestore rules test
+        run: npx --yes firebase-tools@14.11.0 emulators:exec --only firestore --project demo-sentimentscope "npm run test:rules --prefix backend"
