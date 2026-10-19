@@ -97,6 +97,8 @@ temp/
 
 # Firebase
 .firebase/
+.firebase-cache/
+.firebase-home/
 firebase-debug.log
 firestore-debug.log
 ui-debug.log
